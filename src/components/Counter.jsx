@@ -19,12 +19,26 @@ class Counter extends Component {
         }))
     }
 
-    render() {
+    countTotalFeedback = () => {
         const { good, neutral, bad } = this.state
-        
+        return good + neutral + bad
+    }
+
+    countPositiveFeedbackPercentage = () => {
+        const totalFeedback = this.countTotalFeedback()
+        const { good } = this.state
+        return totalFeedback > 0 ? Math.round(good/totalFeedback*100) : 0
+    }
+
+    render() {
+
+        const { good, neutral, bad } = this.state
+        const totalFeedback = this.countTotalFeedback()
+        const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage()
+
         return (
             <>
-                <div>
+                <div >
                     <Button handleClick={() => this.handleIncrement('good')}>Good</Button>
                     <Button handleClick={() => this.handleIncrement('neutral')}>Neutral</Button>
                     <Button handleClick={() => this.handleIncrement('bad')}>Bad</Button>
@@ -34,6 +48,8 @@ class Counter extends Component {
                 <div>Good: {good}</div>
                 <div>Neutral:{neutral}</div>
                 <div>Bad:{bad}</div>
+                <div>Total:{totalFeedback}</div>
+                <div>Good Percentage:{positiveFeedbackPercentage}% </div>
             </>
         )
     }
