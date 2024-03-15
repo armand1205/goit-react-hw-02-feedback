@@ -25,9 +25,9 @@ class Counter extends Component {
         return (
             <>
                 <div>
-                    <Button action={() => this.handleIncrement('good')}>Good</Button>
-                    <Button action={() => this.handleIncrement('neutral')}>Neutral</Button>
-                    <Button action={() => this.handleIncrement('bad')}>Bad</Button>
+                    <Button handleClick={() => this.handleIncrement('good')}>Good</Button>
+                    <Button handleClick={() => this.handleIncrement('neutral')}>Neutral</Button>
+                    <Button handleClick={() => this.handleIncrement('bad')}>Bad</Button>
                 </div>
             
                 <p>Statistics</p>
