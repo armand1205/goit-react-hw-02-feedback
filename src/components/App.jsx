@@ -1,3 +1,5 @@
+import Counter from "./Counter";
+
 export const App = () => {
   return (
     <div
@@ -10,7 +12,8 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+      <p>Please leave feedback</p>
+      <Counter></Counter>
     </div>
   );
 };
