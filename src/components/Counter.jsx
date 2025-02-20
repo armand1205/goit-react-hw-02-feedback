@@ -13,7 +13,8 @@ export default function Counter() {
 
   const countPositiveFeedbackPercentage = () => {
     const totalFeedback = countTotalFeedback();
-    return Math.round((data.good / totalFeedback) * 100);
+    const positivePercentage = Math.round((data.good / totalFeedback) * 100);
+    return `${positivePercentage}%`;
   };
 
   const handleClick = type => {
@@ -23,6 +24,8 @@ export default function Counter() {
     }));
   };
 
+  const totalFeedback = countTotalFeedback();
+
   return (
     <div>
       <div>
@@ -30,11 +33,18 @@ export default function Counter() {
         <button onClick={() => handleClick('neutral')}>Neutral</button>
         <button onClick={() => handleClick('bad')}>Bad</button>
       </div>
-      <p>Good: {data.good}</p>
-      <p>Neutral: {data.neutral}</p>
-      <p>Bad: {data.bad}</p>
-      <p>Total feedback: {countTotalFeedback()}</p>
-      <p>Positive percentage: {countPositiveFeedbackPercentage()}</p>
+      {totalFeedback === 0 ? (
+        <p>No feedback yet</p>
+      ) : (
+        <div>
+          <h2>Statistics</h2>
+          <p>Good: {data.good}</p>
+          <p>Neutral: {data.neutral}</p>
+          <p>Bad: {data.bad}</p>
+          <p>Total feedback: {totalFeedback}</p>
+          <p>Positive percentage: {countPositiveFeedbackPercentage()}</p>
+        </div>
+      )}
     </div>
   );
 }
