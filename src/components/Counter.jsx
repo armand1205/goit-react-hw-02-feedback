@@ -7,12 +7,6 @@ export default function Counter() {
     bad: 0,
   });
 
-  const [showFeedback, setShowFeedback] = useState(false);
-
-  const onShowFeedback = () => {
-    setShowFeedback(!showFeedback);
-  };
-
   const countTotalFeedback = () => {
     return Object.values(data).reduce((total, values) => total + values, 0);
   };
